@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 !.env.example
+
+# sanity (hosted studio build + CLI runtime)
+/dist
+/.sanity
