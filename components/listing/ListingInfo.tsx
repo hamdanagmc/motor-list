@@ -57,11 +57,11 @@ export function ListingInfo({ facets }: { facets: FACETS_QUERY_RESULT }) {
           </tbody>
         </table>
 
-        <h2 className="mt-14 text-[28px] font-semibold tracking-tight">About Motorlist</h2>
+        <h2 className="mt-14 text-[28px] font-semibold tracking-tight">About AGMC Used Cars</h2>
         <p className="mt-4 text-[17px] leading-[1.6] text-ink/85">
-          Motorlist is AGMC’s internal stock portal. Every listing shows the full spec sheet, regional spec, service
-          history and an indicative monthly price, so you can compare cars like for like and contact the branch directly
-          by phone or WhatsApp.
+          AGMC Used Cars is AGMC’s internal stock portal. Every listing shows the full spec sheet, regional spec,
+          service history and an indicative monthly price, so you can compare cars like for like and contact the branch
+          directly by phone or WhatsApp.
         </p>
 
         <h2 className="mt-14 text-[28px] font-semibold tracking-tight">Frequently asked questions</h2>

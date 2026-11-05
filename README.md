@@ -1,4 +1,4 @@
-# Motorlist
+# AGMC Used Cars
 
 AGMC's internal vehicle stock portal. Signed-in employees browse the stock list, filter and sort it, and open a full vehicle page with gallery, specs, finance calculator and branch contact buttons. All vehicle and page content comes from Sanity.
 

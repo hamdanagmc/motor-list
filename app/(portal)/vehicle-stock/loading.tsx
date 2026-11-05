@@ -1,7 +1,10 @@
+import { PortalWelcome } from "@/components/listing/PortalWelcome";
+
 // Skeleton shimmer from the draft, shown while the listing streams in.
 export default function Loading() {
   return (
     <div aria-busy="true" aria-label="Loading vehicles">
+      <PortalWelcome />
       <div className="sticky top-12 z-30 border-b border-line bg-white">
         <div className="mx-auto max-w-[1100px] px-4 pt-4 pb-3 xl:px-0">
           <div className="h-12 rounded-full bg-fill" />

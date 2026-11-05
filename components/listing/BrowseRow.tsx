@@ -33,20 +33,10 @@ export function BrowseRow({ title, items }: { title: string; items: Item[] }) {
   );
 }
 
-/** Rows interleaved after the 4th, 8th and 12th card, as in the draft. Keyed by card index. */
+/** Rows interleaved after the 8th and 12th card, as in the draft. Keyed by card index. */
 export function browseRows(facets: FACETS_QUERY_RESULT): Record<number, React.ReactNode> {
   const body = new Map(facets.bodyTypes.map((b) => [b.value, b.count]));
   return {
-    3: (
-      <BrowseRow
-        title="View popular models"
-        items={facets.models.slice(0, 8).map((m) => ({
-          label: `${m.make} ${m.model}`,
-          href: `/vehicle-stock?make=${m.makeSlug}&model=${encodeURIComponent(m.model)}`,
-          count: m.count,
-        }))}
-      />
-    ),
     7: (
       <BrowseRow
         title="View cars by budget"

@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"], 
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: "Motorlist", template: "%s | Motorlist" },
+  title: { default: "AGMC Used Cars", template: "%s | AGMC Used Cars" },
   description: "AGMC internal vehicle stock portal.",
   robots: { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
 };

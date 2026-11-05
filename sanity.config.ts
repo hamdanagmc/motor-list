@@ -7,7 +7,7 @@ import { schemaTypes } from "./sanity/schemaTypes";
 
 export default defineConfig({
   name: "motorlist",
-  title: "Motorlist",
+  title: "AGMC Used Cars",
   basePath: "/studio",
   projectId,
   dataset,

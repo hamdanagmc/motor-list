@@ -6,6 +6,7 @@ import { browseRows } from "@/components/listing/BrowseRow";
 import { EmptyState } from "@/components/listing/EmptyState";
 import { ListingInfo } from "@/components/listing/ListingInfo";
 import { Pagination } from "@/components/listing/Pagination";
+import { PortalWelcome } from "@/components/listing/PortalWelcome";
 import { ResultsHeader } from "@/components/listing/ResultsHeader";
 import { SearchBand } from "@/components/listing/SearchBand";
 import { VehicleCard } from "@/components/listing/VehicleCard";
@@ -31,6 +32,7 @@ export default async function VehicleStockPage({ searchParams }: PageProps<"/veh
 
   return (
     <FilterProvider filters={filters} total={total} facets={facets}>
+      <PortalWelcome />
       <SearchBand makeNames={makeNames} />
       <ResultsHeader total={total} makes={facets.makes} />
       <section aria-label="Vehicles" className="bg-panel py-4">

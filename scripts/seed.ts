@@ -544,7 +544,7 @@ async function main() {
       studioNote("Employee Benefits"),
       block("Buying a vehicle from stock", "h2"),
       block(
-        "Every vehicle on Motorlist is available to AGMC employees. Contact the listed branch directly by phone or WhatsApp to reserve a car.",
+        "Every vehicle on AGMC Used Cars is available to AGMC employees. Contact the listed branch directly by phone or WhatsApp to reserve a car.",
       ),
       block("Finance", "h2"),
       block(
@@ -564,7 +564,9 @@ async function main() {
     body: [
       studioNote("Terms and Conditions"),
       block("Use of this portal", "h2"),
-      block("Motorlist is for AGMC employees only. Do not share listings, prices or screenshots outside the company."),
+      block(
+        "AGMC Used Cars is for AGMC employees only. Do not share listings, prices or screenshots outside the company.",
+      ),
       block("Prices and availability", "h2"),
       block(
         "Prices include VAT unless stated. Vehicles are subject to prior sale; a vehicle is only reserved once the branch confirms it in writing.",

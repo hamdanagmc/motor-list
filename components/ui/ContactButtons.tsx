@@ -19,7 +19,7 @@ export function ContactButtons({ phone, whatsapp, title, slug, disabled, variant
     variant === "card" ? "bg-panel text-link" : "flex-1",
   );
   const off = "cursor-not-allowed opacity-40";
-  const message = `Hi, I'm interested in the ${title} on Motorlist: ${siteUrl}/vehicle-stock/${slug}`;
+  const message = `Hi, I'm interested in the ${title} on AGMC Used Cars: ${siteUrl}/vehicle-stock/${slug}`;
 
   const call = (
     <>
