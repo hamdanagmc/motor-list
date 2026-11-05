@@ -7,7 +7,7 @@ import { formatAED } from "@/lib/utils/format";
 const list = (items: string[]) =>
   items.length > 1 ? `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}` : (items[0] ?? "");
 
-/** Starting prices + FAQ from the draft's lower section. Every number is computed from Sanity facets. */
+/** About + FAQ from the draft's lower section. Every number is computed from Sanity facets. */
 export function ListingInfo({ facets }: { facets: FACETS_QUERY_RESULT }) {
   const total = facets.makes.reduce((n, m) => n + m.count, 0);
   const cities = facets.cities.flatMap((c) => (c.value ? [c.value] : []));
@@ -33,31 +33,7 @@ export function ListingInfo({ facets }: { facets: FACETS_QUERY_RESULT }) {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-[800px] px-6 py-16">
-        <h2 className="text-[28px] font-semibold tracking-tight">Starting prices</h2>
-        <table className="mt-6 w-full text-[15px]">
-          <thead>
-            <tr className="border-b border-line text-left text-[13px] text-mute">
-              <th scope="col" className="py-3 font-normal">
-                Model
-              </th>
-              <th scope="col" className="py-3 text-right font-normal">
-                From
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-line">
-            {facets.models.slice(0, 5).map((m) => (
-              <tr key={`${m.makeSlug}-${m.model}`}>
-                <td className="py-4">
-                  {m.make} {m.model}
-                </td>
-                <td className="py-4 text-right font-medium">{formatAED(m.from)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <h2 className="mt-14 text-[28px] font-semibold tracking-tight">About AGMC Used Cars</h2>
+        <h2 className="text-[28px] font-semibold tracking-tight">About AGMC Used Cars</h2>
         <p className="mt-4 text-[17px] leading-[1.6] text-ink/85">
           AGMC Used Cars is AGMC’s internal stock portal. Every listing shows the full spec sheet, regional spec,
           service history and an indicative monthly price, so you can compare cars like for like and contact the branch

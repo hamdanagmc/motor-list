@@ -67,13 +67,6 @@ export const FACETS_QUERY = defineQuery(`{
     "count": count(*[_type == "vehicle" && references(^._id)]),
     "models": array::unique(*[_type == "vehicle" && references(^._id)].model)
   }[count > 0] | order(count desc, name asc),
-  "models": *[_type == "vehicle" && _id == *[_type == "vehicle" && make._ref == ^.make._ref && model == ^.model][0]._id]{
-    "make": make->name,
-    "makeSlug": make->slug.current,
-    model,
-    "count": count(*[_type == "vehicle" && make._ref == ^.make._ref && model == ^.model]),
-    "from": math::min(*[_type == "vehicle" && make._ref == ^.make._ref && model == ^.model].price)
-  } | order(count desc, from asc),
   "bodyTypes": *[_type == "vehicle" && defined(bodyType) && _id == *[_type == "vehicle" && bodyType == ^.bodyType][0]._id]{
     "value": bodyType,
     "count": count(*[_type == "vehicle" && bodyType == ^.bodyType])
