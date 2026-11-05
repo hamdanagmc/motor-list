@@ -1,5 +1,5 @@
 /**
- * Seeds Sanity with the 12 vehicles from the UX Pilot draft, plus makes, sellers and the two content pages.
+ * Seeds Sanity with the 12 vehicles from the UX Pilot draft, plus makes, sellers, the two content pages and site settings.
  * Idempotent: fixed document IDs + createOrReplace, and Sanity de-duplicates identical image uploads.
  *
  *   npm run seed   (runs `sanity exec scripts/seed.ts --with-user-token`)
@@ -574,6 +574,12 @@ async function main() {
       block("Finance estimates", "h2"),
       block("Monthly payments shown are estimates only and are subject to lender approval."),
     ],
+  });
+
+  tx.createOrReplace({
+    _id: "siteSettings",
+    _type: "siteSettings",
+    welcomeMessage: "Welcome to AGMC - Internal Stock Portal - Albatha Employees & Family",
   });
 
   const result = await tx.commit();

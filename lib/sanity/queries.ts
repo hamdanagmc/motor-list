@@ -128,3 +128,7 @@ export const SIMILAR_QUERY = defineQuery(`*[
 ] | order((status == "sold") asc, (make._ref == $makeId) desc, publishedAt desc)[0...8] ${CARD}`);
 
 export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slug][0]{ title, body }`);
+
+export const SITE_SETTINGS_QUERY = defineQuery(
+  `*[_type == "siteSettings" && _id == "siteSettings"][0]{ welcomeMessage }`,
+);

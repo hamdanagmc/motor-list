@@ -15,6 +15,15 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: sanity/schema.json
+export type SiteSettings = {
+  _id: string;
+  _type: "siteSettings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  welcomeMessage: string;
+};
+
 export type Page = {
   _id: string;
   _type: "page";
@@ -289,6 +298,7 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | SiteSettings
   | Page
   | Slug
   | MakeReference
@@ -564,6 +574,13 @@ export type PAGE_QUERY_RESULT = {
   }> | null;
 } | null;
 
+// Source: lib/sanity/queries.ts
+// Variable: SITE_SETTINGS_QUERY
+// Query: *[_type == "siteSettings" && _id == "siteSettings"][0]{ welcomeMessage }
+export type SITE_SETTINGS_QUERY_RESULT = {
+  welcomeMessage: string;
+} | null;
+
 // Query TypeMap
 declare global {
   interface SanityQueries {
@@ -572,6 +589,7 @@ declare global {
     '*[_type == "vehicle" && slug.current == $slug][0]{\n  _id,\n  title,\n  "slug": slug.current,\n  status,\n  featured,\n  "make": make->{ _id, name, "slug": slug.current },\n  model,\n  trim,\n  year,\n  price,\n  monthlyPrice,\n  bodyType,\n  fuelType,\n  transmission,\n  drivetrain,\n  cylinders,\n  engineSize,\n  mileage,\n  regionalSpec,\n  exteriorColor,\n  interiorColor,\n  doors,\n  seats,\n  warranty,\n  serviceHistory,\n  city,\n  shortDescription,\n  description,\n  "images": images[]{ alt, asset, crop, hotspot, "lqip": asset->metadata.lqip },\n  features[]{ _key, category, items },\n  "seller": seller->{ name, logo, phone, whatsapp, city }\n}': VEHICLE_QUERY_RESULT;
     '*[\n  _type == "vehicle" && slug.current != $slug && (make._ref == $makeId || bodyType == $bodyType)\n] | order((status == "sold") asc, (make._ref == $makeId) desc, publishedAt desc)[0...8] {\n  _id,\n  title,\n  "slug": slug.current,\n  status,\n  featured,\n  "make": make->name,\n  model,\n  trim,\n  year,\n  price,\n  monthlyPrice,\n  city,\n  regionalSpec,\n  mileage,\n  shortDescription,\n  "image": images[0]{ alt, asset, crop, hotspot, "lqip": asset->metadata.lqip },\n  "imageCount": coalesce(count(images), 0),\n  "seller": seller->{ name, logo, phone, whatsapp }\n}': SIMILAR_QUERY_RESULT;
     '*[_type == "page" && slug.current == $slug][0]{ title, body }': PAGE_QUERY_RESULT;
+    '*[_type == "siteSettings" && _id == "siteSettings"][0]{ welcomeMessage }': SITE_SETTINGS_QUERY_RESULT;
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too

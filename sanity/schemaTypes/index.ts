@@ -39,4 +39,18 @@ const page = defineType({
   ],
 });
 
-export const schemaTypes = [vehicle, make, seller, page];
+const siteSettings = defineType({
+  name: "siteSettings",
+  title: "Site Settings",
+  type: "document",
+  fields: [
+    defineField({
+      name: "welcomeMessage",
+      type: "string",
+      description: "Shown above the search field on the Vehicle Stock page.",
+      validation: (r) => r.required(),
+    }),
+  ],
+});
+
+export const schemaTypes = [vehicle, make, seller, page, siteSettings];

@@ -12,16 +12,17 @@ import { SearchBand } from "@/components/listing/SearchBand";
 import { VehicleCard } from "@/components/listing/VehicleCard";
 import { PAGE_SIZE } from "@/lib/options";
 import { sanityFetch } from "@/lib/sanity/client";
-import { FACETS_QUERY, LISTING_QUERY } from "@/lib/sanity/queries";
+import { FACETS_QUERY, LISTING_QUERY, SITE_SETTINGS_QUERY } from "@/lib/sanity/queries";
 import { parseFilters, toQueryParams, toSearch } from "@/lib/utils/filters";
 
 export const metadata: Metadata = { title: "Vehicle Stock" };
 
 export default async function VehicleStockPage({ searchParams }: PageProps<"/vehicle-stock">) {
   const filters = parseFilters(await searchParams);
-  const [{ total, items }, facets] = await Promise.all([
+  const [{ total, items }, facets, settings] = await Promise.all([
     sanityFetch(LISTING_QUERY, toQueryParams(filters)),
     sanityFetch(FACETS_QUERY),
+    sanityFetch(SITE_SETTINGS_QUERY, {}, ["siteSettings"]),
   ]);
 
   const lastPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -32,7 +33,7 @@ export default async function VehicleStockPage({ searchParams }: PageProps<"/veh
 
   return (
     <FilterProvider filters={filters} total={total} facets={facets}>
-      <PortalWelcome />
+      <PortalWelcome message={settings?.welcomeMessage} />
       <SearchBand makeNames={makeNames} />
       <ResultsHeader total={total} makes={facets.makes} />
       <section aria-label="Vehicles" className="bg-panel py-4">

@@ -11,7 +11,7 @@ Requires Node 20.9 or newer.
 ```bash
 npm install
 cp .env.example .env.local      # then fill in the values below
-npm run seed                    # loads 12 sample vehicles, makes, sellers and the two pages
+npm run seed                    # loads 12 sample vehicles, makes, sellers, the two pages and site settings
 npm run dev                     # http://localhost:3000
 ```
 
@@ -38,7 +38,7 @@ Sign in with any `@agmc.com` address and the password set in `AUTH_CREDENTIALS_P
   npx sanity cors add http://localhost:3000 --credentials
   ```
   Repeat for each deployed URL.
-- **Revalidation:** Sanity reads are cached and tagged by document type (`vehicle`, `make`, `seller`, `page`). To publish changes instantly, add a webhook in sanity.io/manage → API → Webhooks:
+- **Revalidation:** Sanity reads are cached and tagged by document type (`vehicle`, `make`, `seller`, `page`, `siteSettings`). To publish changes instantly, add a webhook in sanity.io/manage → API → Webhooks:
   - URL: `https://<your-host>/api/revalidate`
   - Trigger on create, update and delete; projection `{_type}`
   - Secret: the value of `SANITY_REVALIDATE_SECRET`
