@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
   if (!isValidSignature) return Response.json({ message: "Invalid signature" }, { status: 401 });
   if (!body?._type) return Response.json({ message: "Missing _type" }, { status: 400 });
 
-  revalidateTag(body._type, "max");
+  // expire: 0, not "max": editors publish and refresh, so the next visit must wait for fresh content, not get the old copy.
+  revalidateTag(body._type, { expire: 0 });
   return Response.json({ revalidated: body._type });
 }
